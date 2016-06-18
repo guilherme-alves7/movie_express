@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="bancoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TB_NOTIC">
+    <Key>
+      <PropertyRef Name="NT_ID" />
+    </Key>
+    <Property Name="NT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NT_TITULO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NT_DTPUBL" Type="DateTime" Precision="0" />
+    <Property Name="NT_CORPO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NT_CURTID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TB_PDPROD">
+    <Key>
+      <PropertyRef Name="PEDI_ID" />
+      <PropertyRef Name="PROD_ID" />
+    </Key>
+    <Property Name="PEDI_ID" Type="Int32" Nullable="false" />
+    <Property Name="PROD_ID" Type="Int32" Nullable="false" />
+    <Property Name="PDPR_QTD" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TB_PEDIDO" Relationship="Self.FK_TB_PEDI_ToTable_PDPROD" FromRole="TB_PDPROD" ToRole="TB_PEDIDO" />
+    <NavigationProperty Name="TB_PROD" Relationship="Self.FK_TB_PROD_ToTable_PDPROD" FromRole="TB_PDPROD" ToRole="TB_PROD" />
+  </EntityType>
+  <EntityType Name="TB_PEDIDO">
+    <Key>
+      <PropertyRef Name="PEDI_ID" />
+    </Key>
+    <Property Name="PEDI_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="US_ID" Type="Int32" Nullable="false" />
+    <Property Name="PEDI_DATA" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="PEDI_VALOR" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="PEDI_PAGO" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="TB_PDPROD" Relationship="Self.FK_TB_PEDI_ToTable_PDPROD" FromRole="TB_PEDIDO" ToRole="TB_PDPROD" />
+    <NavigationProperty Name="TB_USER" Relationship="Self.FK_USER_TO_PEDIDO" FromRole="TB_PEDIDO" ToRole="TB_USER" />
+  </EntityType>
+  <EntityType Name="TB_PROD">
+    <Key>
+      <PropertyRef Name="PROD_ID" />
+    </Key>
+    <Property Name="PROD_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PROD_TITULO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PROD_PRECO" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+    <Property Name="PROD_GENERO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PROD_ANOLAN" Type="Int32" />
+    <Property Name="PROD_SINOPS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PROD_IMDB" Type="Int32" />
+    <Property Name="PROD_QTDEST" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TB_PDPROD" Relationship="Self.FK_TB_PROD_ToTable_PDPROD" FromRole="TB_PROD" ToRole="TB_PDPROD" />
+  </EntityType>
+  <EntityType Name="TB_USER">
+    <Key>
+      <PropertyRef Name="US_ID" />
+    </Key>
+    <Property Name="US_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="US_ADM" Type="Boolean" Nullable="false" />
+    <Property Name="US_NOME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="US_CPF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="US_RG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="US_NASC" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="US_EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="US_SENHA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="US_TEL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="US_CEL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TB_PEDIDO" Relationship="Self.FK_USER_TO_PEDIDO" FromRole="TB_USER" ToRole="TB_PEDIDO" />
+  </EntityType>
+  <Association Name="FK_TB_PEDI_ToTable_PDPROD">
+    <End Role="TB_PEDIDO" Type="Self.TB_PEDIDO" Multiplicity="1" />
+    <End Role="TB_PDPROD" Type="Self.TB_PDPROD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_PEDIDO">
+        <PropertyRef Name="PEDI_ID" />
+      </Principal>
+      <Dependent Role="TB_PDPROD">
+        <PropertyRef Name="PEDI_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_PROD_ToTable_PDPROD">
+    <End Role="TB_PROD" Type="Self.TB_PROD" Multiplicity="1" />
+    <End Role="TB_PDPROD" Type="Self.TB_PDPROD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_PROD">
+        <PropertyRef Name="PROD_ID" />
+      </Principal>
+      <Dependent Role="TB_PDPROD">
+        <PropertyRef Name="PROD_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USER_TO_PEDIDO">
+    <End Role="TB_USER" Type="Self.TB_USER" Multiplicity="1" />
+    <End Role="TB_PEDIDO" Type="Self.TB_PEDIDO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_USER">
+        <PropertyRef Name="US_ID" />
+      </Principal>
+      <Dependent Role="TB_PEDIDO">
+        <PropertyRef Name="US_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="bancoEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TB_NOTIC" EntityType="Self.TB_NOTIC" />
+    <EntitySet Name="TB_PDPROD" EntityType="Self.TB_PDPROD" />
+    <EntitySet Name="TB_PEDIDO" EntityType="Self.TB_PEDIDO" />
+    <EntitySet Name="TB_PROD" EntityType="Self.TB_PROD" />
+    <EntitySet Name="TB_USER" EntityType="Self.TB_USER" />
+    <AssociationSet Name="FK_TB_PEDI_ToTable_PDPROD" Association="Self.FK_TB_PEDI_ToTable_PDPROD">
+      <End Role="TB_PEDIDO" EntitySet="TB_PEDIDO" />
+      <End Role="TB_PDPROD" EntitySet="TB_PDPROD" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_PROD_ToTable_PDPROD" Association="Self.FK_TB_PROD_ToTable_PDPROD">
+      <End Role="TB_PROD" EntitySet="TB_PROD" />
+      <End Role="TB_PDPROD" EntitySet="TB_PDPROD" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USER_TO_PEDIDO" Association="Self.FK_USER_TO_PEDIDO">
+      <End Role="TB_USER" EntitySet="TB_USER" />
+      <End Role="TB_PEDIDO" EntitySet="TB_PEDIDO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

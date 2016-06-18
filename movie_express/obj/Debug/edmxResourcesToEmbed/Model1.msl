@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="bancoModelStoreContainer" CdmEntityContainer="bancoEntities">
+    <EntitySetMapping Name="TB_NOTIC">
+      <EntityTypeMapping TypeName="bancoModel.TB_NOTIC">
+        <MappingFragment StoreEntitySet="TB_NOTIC">
+          <ScalarProperty Name="NT_ID" ColumnName="NT_ID" />
+          <ScalarProperty Name="NT_TITULO" ColumnName="NT_TITULO" />
+          <ScalarProperty Name="NT_DTPUBL" ColumnName="NT_DTPUBL" />
+          <ScalarProperty Name="NT_CORPO" ColumnName="NT_CORPO" />
+          <ScalarProperty Name="NT_CURTID" ColumnName="NT_CURTID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_PDPROD">
+      <EntityTypeMapping TypeName="bancoModel.TB_PDPROD">
+        <MappingFragment StoreEntitySet="TB_PDPROD">
+          <ScalarProperty Name="PEDI_ID" ColumnName="PEDI_ID" />
+          <ScalarProperty Name="PROD_ID" ColumnName="PROD_ID" />
+          <ScalarProperty Name="PDPR_QTD" ColumnName="PDPR_QTD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_PEDIDO">
+      <EntityTypeMapping TypeName="bancoModel.TB_PEDIDO">
+        <MappingFragment StoreEntitySet="TB_PEDIDO">
+          <ScalarProperty Name="PEDI_ID" ColumnName="PEDI_ID" />
+          <ScalarProperty Name="US_ID" ColumnName="US_ID" />
+          <ScalarProperty Name="PEDI_DATA" ColumnName="PEDI_DATA" />
+          <ScalarProperty Name="PEDI_VALOR" ColumnName="PEDI_VALOR" />
+          <ScalarProperty Name="PEDI_PAGO" ColumnName="PEDI_PAGO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_PROD">
+      <EntityTypeMapping TypeName="bancoModel.TB_PROD">
+        <MappingFragment StoreEntitySet="TB_PROD">
+          <ScalarProperty Name="PROD_ID" ColumnName="PROD_ID" />
+          <ScalarProperty Name="PROD_TITULO" ColumnName="PROD_TITULO" />
+          <ScalarProperty Name="PROD_PRECO" ColumnName="PROD_PRECO" />
+          <ScalarProperty Name="PROD_GENERO" ColumnName="PROD_GENERO" />
+          <ScalarProperty Name="PROD_ANOLAN" ColumnName="PROD_ANOLAN" />
+          <ScalarProperty Name="PROD_SINOPS" ColumnName="PROD_SINOPS" />
+          <ScalarProperty Name="PROD_IMDB" ColumnName="PROD_IMDB" />
+          <ScalarProperty Name="PROD_QTDEST" ColumnName="PROD_QTDEST" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_USER">
+      <EntityTypeMapping TypeName="bancoModel.TB_USER">
+        <MappingFragment StoreEntitySet="TB_USER">
+          <ScalarProperty Name="US_ID" ColumnName="US_ID" />
+          <ScalarProperty Name="US_ADM" ColumnName="US_ADM" />
+          <ScalarProperty Name="US_NOME" ColumnName="US_NOME" />
+          <ScalarProperty Name="US_CPF" ColumnName="US_CPF" />
+          <ScalarProperty Name="US_RG" ColumnName="US_RG" />
+          <ScalarProperty Name="US_NASC" ColumnName="US_NASC" />
+          <ScalarProperty Name="US_EMAIL" ColumnName="US_EMAIL" />
+          <ScalarProperty Name="US_SENHA" ColumnName="US_SENHA" />
+          <ScalarProperty Name="US_TEL" ColumnName="US_TEL" />
+          <ScalarProperty Name="US_CEL" ColumnName="US_CEL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

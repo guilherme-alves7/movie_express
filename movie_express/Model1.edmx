@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="bancoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TB_NOTIC">
+          <Key>
+            <PropertyRef Name="NT_ID" />
+          </Key>
+          <Property Name="NT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NT_TITULO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NT_DTPUBL" Type="date" />
+          <Property Name="NT_CORPO" Type="text" Nullable="false" />
+          <Property Name="NT_CURTID" Type="int" />
+        </EntityType>
+        <EntityType Name="TB_PDPROD">
+          <Key>
+            <PropertyRef Name="PEDI_ID" />
+            <PropertyRef Name="PROD_ID" />
+          </Key>
+          <Property Name="PEDI_ID" Type="int" Nullable="false" />
+          <Property Name="PROD_ID" Type="int" Nullable="false" />
+          <Property Name="PDPR_QTD" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_PEDIDO">
+          <Key>
+            <PropertyRef Name="PEDI_ID" />
+          </Key>
+          <Property Name="PEDI_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="US_ID" Type="int" Nullable="false" />
+          <Property Name="PEDI_DATA" Type="date" Nullable="false" />
+          <Property Name="PEDI_VALOR" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="PEDI_PAGO" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_PROD">
+          <Key>
+            <PropertyRef Name="PROD_ID" />
+          </Key>
+          <Property Name="PROD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PROD_TITULO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PROD_PRECO" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="PROD_GENERO" Type="varchar" MaxLength="50" />
+          <Property Name="PROD_ANOLAN" Type="int" />
+          <Property Name="PROD_SINOPS" Type="text" />
+          <Property Name="PROD_IMDB" Type="int" />
+          <Property Name="PROD_QTDEST" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_USER">
+          <Key>
+            <PropertyRef Name="US_ID" />
+          </Key>
+          <Property Name="US_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="US_ADM" Type="bit" Nullable="false" />
+          <Property Name="US_NOME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="US_CPF" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="US_RG" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="US_NASC" Type="date" Nullable="false" />
+          <Property Name="US_EMAIL" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="US_SENHA" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="US_TEL" Type="varchar" MaxLength="50" />
+          <Property Name="US_CEL" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_TB_PEDI_ToTable_PDPROD">
+          <End Role="TB_PEDIDO" Type="Self.TB_PEDIDO" Multiplicity="1" />
+          <End Role="TB_PDPROD" Type="Self.TB_PDPROD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_PEDIDO">
+              <PropertyRef Name="PEDI_ID" />
+            </Principal>
+            <Dependent Role="TB_PDPROD">
+              <PropertyRef Name="PEDI_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_PROD_ToTable_PDPROD">
+          <End Role="TB_PROD" Type="Self.TB_PROD" Multiplicity="1" />
+          <End Role="TB_PDPROD" Type="Self.TB_PDPROD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_PROD">
+              <PropertyRef Name="PROD_ID" />
+            </Principal>
+            <Dependent Role="TB_PDPROD">
+              <PropertyRef Name="PROD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_TO_PEDIDO">
+          <End Role="TB_USER" Type="Self.TB_USER" Multiplicity="1" />
+          <End Role="TB_PEDIDO" Type="Self.TB_PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_USER">
+              <PropertyRef Name="US_ID" />
+            </Principal>
+            <Dependent Role="TB_PEDIDO">
+              <PropertyRef Name="US_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="bancoModelStoreContainer">
+          <EntitySet Name="TB_NOTIC" EntityType="Self.TB_NOTIC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_PDPROD" EntityType="Self.TB_PDPROD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_PEDIDO" EntityType="Self.TB_PEDIDO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_PROD" EntityType="Self.TB_PROD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_USER" EntityType="Self.TB_USER" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TB_PEDI_ToTable_PDPROD" Association="Self.FK_TB_PEDI_ToTable_PDPROD">
+            <End Role="TB_PEDIDO" EntitySet="TB_PEDIDO" />
+            <End Role="TB_PDPROD" EntitySet="TB_PDPROD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_PROD_ToTable_PDPROD" Association="Self.FK_TB_PROD_ToTable_PDPROD">
+            <End Role="TB_PROD" EntitySet="TB_PROD" />
+            <End Role="TB_PDPROD" EntitySet="TB_PDPROD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_TO_PEDIDO" Association="Self.FK_USER_TO_PEDIDO">
+            <End Role="TB_USER" EntitySet="TB_USER" />
+            <End Role="TB_PEDIDO" EntitySet="TB_PEDIDO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="bancoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TB_NOTIC">
+          <Key>
+            <PropertyRef Name="NT_ID" />
+          </Key>
+          <Property Name="NT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NT_TITULO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NT_DTPUBL" Type="DateTime" Precision="0" />
+          <Property Name="NT_CORPO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NT_CURTID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TB_PDPROD">
+          <Key>
+            <PropertyRef Name="PEDI_ID" />
+            <PropertyRef Name="PROD_ID" />
+          </Key>
+          <Property Name="PEDI_ID" Type="Int32" Nullable="false" />
+          <Property Name="PROD_ID" Type="Int32" Nullable="false" />
+          <Property Name="PDPR_QTD" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TB_PEDIDO" Relationship="Self.FK_TB_PEDI_ToTable_PDPROD" FromRole="TB_PDPROD" ToRole="TB_PEDIDO" />
+          <NavigationProperty Name="TB_PROD" Relationship="Self.FK_TB_PROD_ToTable_PDPROD" FromRole="TB_PDPROD" ToRole="TB_PROD" />
+        </EntityType>
+        <EntityType Name="TB_PEDIDO">
+          <Key>
+            <PropertyRef Name="PEDI_ID" />
+          </Key>
+          <Property Name="PEDI_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="US_ID" Type="Int32" Nullable="false" />
+          <Property Name="PEDI_DATA" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PEDI_VALOR" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="PEDI_PAGO" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="TB_PDPROD" Relationship="Self.FK_TB_PEDI_ToTable_PDPROD" FromRole="TB_PEDIDO" ToRole="TB_PDPROD" />
+          <NavigationProperty Name="TB_USER" Relationship="Self.FK_USER_TO_PEDIDO" FromRole="TB_PEDIDO" ToRole="TB_USER" />
+        </EntityType>
+        <EntityType Name="TB_PROD">
+          <Key>
+            <PropertyRef Name="PROD_ID" />
+          </Key>
+          <Property Name="PROD_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PROD_TITULO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PROD_PRECO" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="PROD_GENERO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PROD_ANOLAN" Type="Int32" />
+          <Property Name="PROD_SINOPS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PROD_IMDB" Type="Int32" />
+          <Property Name="PROD_QTDEST" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TB_PDPROD" Relationship="Self.FK_TB_PROD_ToTable_PDPROD" FromRole="TB_PROD" ToRole="TB_PDPROD" />
+        </EntityType>
+        <EntityType Name="TB_USER">
+          <Key>
+            <PropertyRef Name="US_ID" />
+          </Key>
+          <Property Name="US_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="US_ADM" Type="Boolean" Nullable="false" />
+          <Property Name="US_NOME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="US_CPF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="US_RG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="US_NASC" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="US_EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="US_SENHA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="US_TEL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="US_CEL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TB_PEDIDO" Relationship="Self.FK_USER_TO_PEDIDO" FromRole="TB_USER" ToRole="TB_PEDIDO" />
+        </EntityType>
+        <Association Name="FK_TB_PEDI_ToTable_PDPROD">
+          <End Role="TB_PEDIDO" Type="Self.TB_PEDIDO" Multiplicity="1" />
+          <End Role="TB_PDPROD" Type="Self.TB_PDPROD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_PEDIDO">
+              <PropertyRef Name="PEDI_ID" />
+            </Principal>
+            <Dependent Role="TB_PDPROD">
+              <PropertyRef Name="PEDI_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_PROD_ToTable_PDPROD">
+          <End Role="TB_PROD" Type="Self.TB_PROD" Multiplicity="1" />
+          <End Role="TB_PDPROD" Type="Self.TB_PDPROD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_PROD">
+              <PropertyRef Name="PROD_ID" />
+            </Principal>
+            <Dependent Role="TB_PDPROD">
+              <PropertyRef Name="PROD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_TO_PEDIDO">
+          <End Role="TB_USER" Type="Self.TB_USER" Multiplicity="1" />
+          <End Role="TB_PEDIDO" Type="Self.TB_PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_USER">
+              <PropertyRef Name="US_ID" />
+            </Principal>
+            <Dependent Role="TB_PEDIDO">
+              <PropertyRef Name="US_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="bancoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TB_NOTIC" EntityType="Self.TB_NOTIC" />
+          <EntitySet Name="TB_PDPROD" EntityType="Self.TB_PDPROD" />
+          <EntitySet Name="TB_PEDIDO" EntityType="Self.TB_PEDIDO" />
+          <EntitySet Name="TB_PROD" EntityType="Self.TB_PROD" />
+          <EntitySet Name="TB_USER" EntityType="Self.TB_USER" />
+          <AssociationSet Name="FK_TB_PEDI_ToTable_PDPROD" Association="Self.FK_TB_PEDI_ToTable_PDPROD">
+            <End Role="TB_PEDIDO" EntitySet="TB_PEDIDO" />
+            <End Role="TB_PDPROD" EntitySet="TB_PDPROD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_PROD_ToTable_PDPROD" Association="Self.FK_TB_PROD_ToTable_PDPROD">
+            <End Role="TB_PROD" EntitySet="TB_PROD" />
+            <End Role="TB_PDPROD" EntitySet="TB_PDPROD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_TO_PEDIDO" Association="Self.FK_USER_TO_PEDIDO">
+            <End Role="TB_USER" EntitySet="TB_USER" />
+            <End Role="TB_PEDIDO" EntitySet="TB_PEDIDO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="bancoModelStoreContainer" CdmEntityContainer="bancoEntities">
+          <EntitySetMapping Name="TB_NOTIC">
+            <EntityTypeMapping TypeName="bancoModel.TB_NOTIC">
+              <MappingFragment StoreEntitySet="TB_NOTIC">
+                <ScalarProperty Name="NT_ID" ColumnName="NT_ID" />
+                <ScalarProperty Name="NT_TITULO" ColumnName="NT_TITULO" />
+                <ScalarProperty Name="NT_DTPUBL" ColumnName="NT_DTPUBL" />
+                <ScalarProperty Name="NT_CORPO" ColumnName="NT_CORPO" />
+                <ScalarProperty Name="NT_CURTID" ColumnName="NT_CURTID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_PDPROD">
+            <EntityTypeMapping TypeName="bancoModel.TB_PDPROD">
+              <MappingFragment StoreEntitySet="TB_PDPROD">
+                <ScalarProperty Name="PEDI_ID" ColumnName="PEDI_ID" />
+                <ScalarProperty Name="PROD_ID" ColumnName="PROD_ID" />
+                <ScalarProperty Name="PDPR_QTD" ColumnName="PDPR_QTD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_PEDIDO">
+            <EntityTypeMapping TypeName="bancoModel.TB_PEDIDO">
+              <MappingFragment StoreEntitySet="TB_PEDIDO">
+                <ScalarProperty Name="PEDI_ID" ColumnName="PEDI_ID" />
+                <ScalarProperty Name="US_ID" ColumnName="US_ID" />
+                <ScalarProperty Name="PEDI_DATA" ColumnName="PEDI_DATA" />
+                <ScalarProperty Name="PEDI_VALOR" ColumnName="PEDI_VALOR" />
+                <ScalarProperty Name="PEDI_PAGO" ColumnName="PEDI_PAGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_PROD">
+            <EntityTypeMapping TypeName="bancoModel.TB_PROD">
+              <MappingFragment StoreEntitySet="TB_PROD">
+                <ScalarProperty Name="PROD_ID" ColumnName="PROD_ID" />
+                <ScalarProperty Name="PROD_TITULO" ColumnName="PROD_TITULO" />
+                <ScalarProperty Name="PROD_PRECO" ColumnName="PROD_PRECO" />
+                <ScalarProperty Name="PROD_GENERO" ColumnName="PROD_GENERO" />
+                <ScalarProperty Name="PROD_ANOLAN" ColumnName="PROD_ANOLAN" />
+                <ScalarProperty Name="PROD_SINOPS" ColumnName="PROD_SINOPS" />
+                <ScalarProperty Name="PROD_IMDB" ColumnName="PROD_IMDB" />
+                <ScalarProperty Name="PROD_QTDEST" ColumnName="PROD_QTDEST" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_USER">
+            <EntityTypeMapping TypeName="bancoModel.TB_USER">
+              <MappingFragment StoreEntitySet="TB_USER">
+                <ScalarProperty Name="US_ID" ColumnName="US_ID" />
+                <ScalarProperty Name="US_ADM" ColumnName="US_ADM" />
+                <ScalarProperty Name="US_NOME" ColumnName="US_NOME" />
+                <ScalarProperty Name="US_CPF" ColumnName="US_CPF" />
+                <ScalarProperty Name="US_RG" ColumnName="US_RG" />
+                <ScalarProperty Name="US_NASC" ColumnName="US_NASC" />
+                <ScalarProperty Name="US_EMAIL" ColumnName="US_EMAIL" />
+                <ScalarProperty Name="US_SENHA" ColumnName="US_SENHA" />
+                <ScalarProperty Name="US_TEL" ColumnName="US_TEL" />
+                <ScalarProperty Name="US_CEL" ColumnName="US_CEL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
