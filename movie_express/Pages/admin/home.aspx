@@ -8,7 +8,7 @@
         <div class="col-lg-12">
             <br />
             <h1 class="page-header">
-                Tables
+                Listagem de Noticias
             </h1>
         </div>
     </div>
