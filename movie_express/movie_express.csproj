@@ -148,6 +148,7 @@
     <Content Include="Pages\admin\listagem_pedidos.aspx" />
     <Content Include="Pages\admin\listar_produtos.aspx" />
     <Content Include="Pages\index.html" />
+    <Content Include="Pages\login.aspx" />
     <Content Include="Pages\noticias.aspx" />
     <Content Include="Pages\produtos.aspx" />
     <Content Include="Pages\shop.html" />
@@ -238,6 +239,13 @@
     </Compile>
     <Compile Include="Pages\admin\listar_produtos.aspx.designer.cs">
       <DependentUpon>listar_produtos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\noticias.aspx.cs">
       <DependentUpon>noticias.aspx</DependentUpon>
