@@ -42,11 +42,7 @@
                 <div class="col-md-8">
                     <div class="user-menu">
                         <ul>
-                            <li><a href="#"><i class="fa fa-user"></i> Minha Conta</a></li>
-                            <li><a href="#"><i class="fa fa-heart"></i> Lista de Desejos</a></li>
-                            <li><a href="cart.html"><i class="fa fa-user"></i> Meu Carrinho</a></li>
-                            <li><a href="checkout.html"><i class="fa fa-user"></i> Checkout</a></li>
-                            <li><a href="#"><i class="fa fa-user"></i> Login</a></li>
+                            <li><a href="login.aspx"><i class="fa fa-user"></i> Minha Conta</a></li>
                         </ul>
                     </div>
                 </div>
@@ -95,12 +91,6 @@
                         <li id="noticias">
                             <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Pages/noticias.aspx">Notícias</asp:HyperLink>
                         </li>
-                        <li><a href="single-product.html">Single product</a></li>
-                        <li><a href="cart.html">Cart</a></li>
-                        <li><a href="checkout.html">Checkout</a></li>
-                        <li><a href="#">Category</a></li>
-                        <li><a href="#">Others</a></li>
-                        <li><a href="#">Contact</a></li>
                     </ul>
                 </div>  
             </div>
