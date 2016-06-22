@@ -65,7 +65,7 @@
                 
                 <div class="col-sm-6">
                     <div class="shopping-item">
-                        <a href="cart.html">Carrinho - <span class="cart-amunt">R$100,00</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+                        <asp:HyperLink ID="linkCarrinho" runat="server" NavigateUrl="~/Pages/carrinho.aspx">Carrinho - <span class="cart-amunt">R$100,00</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></asp:HyperLink>
                     </div>
                 </div>
             </div>
@@ -150,10 +150,8 @@
                         <h2 class="footer-wid-title">Newsletter</h2>
                         <p>Sign up to our newsletter and get exclusive deals you wont find anywhere else straight to your inbox!</p>
                         <div class="newsletter-form">
-                            <form action="#">
                                 <input type="email" placeholder="Type your email">
                                 <input type="submit" value="Subscribe">
-                            </form>
                         </div>
                     </div>
                 </div>
@@ -200,10 +198,6 @@
     <!-- Slider -->
     <script type="text/javascript" src='<%=ResolveClientUrl("~/assets/js/bxslider.min.js")%>'></script>
 	<script type="text/javascript" src='<%=ResolveClientUrl("~/assets/js/script.slider.js")%>'></script>        
-    </div>
-    </form>
-</body>
-</html>
     </div>
     </form>
 </body>

@@ -301,3 +301,12 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+movie_express/bin/movie_express.dll
+*.dll
+movie_express/bin/movie_express.dll
+movie_express/bin/movie_express.pdb
+movie_express/obj/Debug/movie_express.pdb
+movie_express/obj/Debug/movie_express.csprojResolveAssemblyReference.cache
+*.cache
+movie_express/movie_express.csproj.user
+movie_express/movie_express.csproj

@@ -21,5 +21,11 @@ namespace movie_express.Pages
                 lbCarrinhoVazio.Text = "Seu carrinho esta vazio.";
             }
         }
+
+        protected void btn_remove_prod_Click(object sender, EventArgs e)
+        {
+            Session["carrinho"] = null;
+            Response.Redirect("carrinho.aspx", false);
+        }
     }
 }

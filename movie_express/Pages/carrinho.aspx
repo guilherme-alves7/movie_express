@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteLoja.Master" AutoEventWireup="true" CodeBehind="carrinho.aspx.cs" Inherits="movie_express.Pages.carrinho" %>
+﻿<%@ Page EnableEventValidation="false"  Title="" Language="C#" MasterPageFile="~/SiteLoja.Master" AutoEventWireup="true" CodeBehind="carrinho.aspx.cs" Inherits="movie_express.Pages.carrinho" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -13,7 +13,7 @@
             </div>            
         </div>
     </div>
-    <div class="col-md-12">carrinho: <asp:Label ID="lbSessao" runat="server"></asp:Label>
+    <div class="col-md-12">carrinho: <asp:Label ID="lbSessao" runat="server"></asp:Label>        
     </div>
     <div class="product-content-right" style="margin-top:1%;">
         <div class="woocommerce">
@@ -35,23 +35,24 @@
                                 <asp:Label ID="lbCarrinhoVazio" runat="server"></asp:Label>
                             </td>
                         </tr>
-                        <asp:Repeater ID="Repeater1" runat="server">
+                        <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1">
                             <ItemTemplate>
                                 <tr class="cart_item">
                                     <td class="product-remove">
-                                        <a title="Remove this item" class="remove" href="#">×</a> 
+                                        <asp:Button ID="btn_remove_prod" runat="server" OnClick="btn_remove_prod_Click" Text="x" />
                                     </td>
 
                                     <td class="product-thumbnail">
-                                        <a href="single-product.html"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="../assets/img/produtos/<%# Eval("PROD_ID") %>.jpg"></a>
+                                        <a href="single-product.html">
+                                            <img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="../assets/img/produtos/<%# Eval("PROD_ID") %>.jpg"></a>
                                     </td>
 
                                     <td class="product-name">
-                                        <a href="single-product.html"><%# Eval("PROD_TITULO") %></a> 
+                                        <a href="single-product.html"><%# Eval("PROD_TITULO") %></a>
                                     </td>
 
                                     <td class="product-price">
-                                        <span class="amount"><%# Eval("PROD_PRECO", "{0:c}") %></span> 
+                                        <span class="amount"><%# Eval("PROD_PRECO", "{0:c}") %></span>
                                     </td>
 
                                     <td class="product-quantity">
@@ -63,16 +64,16 @@
                                     </td>
 
                                     <td class="product-subtotal">
-                                        <span id="total-<%# Eval("PROD_ID") %>" class="amount">15.00</span> 
+                                        <span id="total-<%# Eval("PROD_ID") %>" class="amount">15.00</span>
                                     </td>
                                 </tr>
                             </ItemTemplate>
-                        </asp:Repeater>  
-                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [TB_PROD] WHERE ([PROD_ID] = @PROD_ID)">
+                        </asp:Repeater>
+                        <asp:SqlDataSource runat="server" ID="SqlDataSource1" ConnectionString='<%$ ConnectionStrings:ConnectionString %>' SelectCommand="SELECT * FROM [TB_PROD] WHERE ([PROD_ID] = @PROD_ID)">
                             <SelectParameters>
                                 <asp:SessionParameter SessionField="carrinho" Name="PROD_ID" Type="Int32"></asp:SessionParameter>
                             </SelectParameters>
-                        </asp:SqlDataSource>                      
+                        </asp:SqlDataSource>
                         <tr>
                             <td class="actions" colspan="6" style="text-align: right">
                                 <input type="submit" value="Finalizar Pedido" name="proceed" class="checkout-button button alt wc-forward">
