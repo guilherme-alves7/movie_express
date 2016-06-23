@@ -176,7 +176,7 @@
             <!-- /.navbar-collapse -->
         </nav>
 
-        <div id="page-wrapper" style="width:100%;">
+        <div id="page-wrapper" style="width:120%;">
 
             <div class="container-fluid">
                 <!-- conteudo do site -->
