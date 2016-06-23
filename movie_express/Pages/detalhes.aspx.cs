@@ -21,8 +21,15 @@ namespace movie_express.Pages
 
         protected void btn_add_carrinho_Click(object sender, EventArgs e)
         {
-            Session["carrinho"] = inputPROD_ID.Value;
-            //Application["carrinho"] = inputPROD_ID.Value.ToString();
+            movie_express.bancoEntities banco = new movie_express.bancoEntities();
+           // TB_PROD produto = banco.TB_PROD.SingleOrDefault<v => v.PROD_ID == inputPROD_ID.Value >;
+
+            if (Session["total_carrinho"] == null)
+            {
+               // Session["total_carrinho"] = 
+            }
+
+            Session["carrinho"] = inputPROD_ID.Value;            
             Response.Redirect("carrinho.aspx", false);
         }
     }

@@ -10,11 +10,10 @@
                         <h2>Seu Carrinho de Compras</h2>
                     </div>
                 </div>
-            </div>            
+            </div>                        
         </div>
     </div>
-    <div class="col-md-12">carrinho: <asp:Label ID="lbSessao" runat="server"></asp:Label>        
-    </div>
+
     <div class="product-content-right" style="margin-top:1%;">
         <div class="woocommerce">
             <form method="post" action="#">
@@ -56,10 +55,19 @@
                                     </td>
 
                                     <td class="product-quantity">
-                                        <div class="quantity buttons_added">
-                                            <input type="button" class="minus" value="-">
-                                            <input type="number" size="4" class="input-text qty text" data-cod="<%# Eval("PROD_ID") %>" title="Qty" value="1" min="0" step="1">
-                                            <input type="button" class="plus" value="+">
+                                        <div class="quantity buttons_added" data-id="<%# Eval("PROD_ID") %>">
+                                            <asp:DropDownList ID="qnt_prod" runat="server" OnSelectedIndexChanged="qnt_prod_SelectedIndexChanged" CssClass="input-text qty text">
+                                                <asp:ListItem Text="1" Value="1"/>
+                                                <asp:ListItem Text="2" Value="2"/>
+                                                <asp:ListItem Text="3" Value="3"/>
+                                                <asp:ListItem Text="4" Value="4"/>
+                                                <asp:ListItem Text="5" Value="5"/>
+                                                <asp:ListItem Text="6" Value="6"/>
+                                                <asp:ListItem Text="7" Value="7"/>
+                                                <asp:ListItem Text="8" Value="8"/>
+                                                <asp:ListItem Text="9" Value="9"/>
+                                                <asp:ListItem Text="10" Value="10"/>
+                                            </asp:DropDownList>
                                         </div>
                                     </td>
 
@@ -76,7 +84,12 @@
                         </asp:SqlDataSource>
                         <tr>
                             <td class="actions" colspan="6" style="text-align: right">
-                                <input type="submit" value="Finalizar Pedido" name="proceed" class="checkout-button button alt wc-forward">
+                                <asp:Button ID="finalizar_pedido" runat="server" Text="Finalizar Pedido" CssClass="checkout-button button alt wc-forward" OnClick="finalizar_pedido_Click" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right" colspan="6" class="actions">
+                                <asp:Label ID="status_user" runat="server" Text=""></asp:Label>
                             </td>
                         </tr>
                     </tbody>

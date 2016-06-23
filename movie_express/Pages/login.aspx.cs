@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Net.Mail;
+using System.Net;
+using System.Text;
 
 namespace movie_express.Pages
 {
@@ -32,15 +35,8 @@ namespace movie_express.Pages
 
             banco.TB_USER.Add(user);
             banco.SaveChanges();
-            Response.Redirect("produtos.aspx", false);
-            //if (retorno)
-            //{
-            //  lblPedMsg.Text = "Inserção bem sucedida! ";
-            //}
-            //else
-            //{
-            //   lblPedMsg.Text = "Inserção falhou!";
-            //}
+
+            Response.Redirect("produtos.aspx", false);            
         }
     }
 }
