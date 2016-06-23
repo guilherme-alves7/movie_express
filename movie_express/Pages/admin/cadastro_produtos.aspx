@@ -14,10 +14,13 @@
    <div class="row">
         <div class="col-lg-12">
             <br />
-                <asp:TextBox ID="TextBox1" placeholder="Titulo do produto" runat="server" Width="700px"></asp:TextBox>
-                <br />
-                <br />
-            <asp:DropDownList ID="DropDownList1" runat="server">
+            <div class="col-md-12">
+                <asp:TextBox ID="Titulo_Prod" placeholder="Titulo do produto" runat="server" Width="700px"></asp:TextBox>
+               
+            </div>
+            <br /><br />
+            <div class="col-md-12">
+            <asp:DropDownList ID="Genero_Prod" runat="server">
                 <asp:ListItem>Escolha um Genero</asp:ListItem>
                 <asp:ListItem>Terror</asp:ListItem>
                 <asp:ListItem>Ação</asp:ListItem>
@@ -28,32 +31,37 @@
                 <asp:ListItem>Ação e Aventura</asp:ListItem>
                 <asp:ListItem>Animação</asp:ListItem>
             </asp:DropDownList>
+            <br />
+            </div>
                 <br />
                 <br />
-           <asp:TextBox ID="TextBox3" runat="server" placeholder="Digite a data do lançamento" onKeyUp="mascara_data(this)" MaxLength="10" Width="225px"></asp:TextBox>         
+               
+           <div class="col-md-12">
+           <asp:TextBox ID="Ano_Lanc_Prod" runat="server" placeholder="Digite a data do lançamento" MaxLength="4" Width="225px"></asp:TextBox>         
                 <br />
                 <br />
-            <asp:TextBox ID="TextBox4" runat="server" placeholder="Sinopse do produto" Height="235px" Width="700px"></asp:TextBox>
-                <br />
-                <br />
-            <asp:TextBox ID="TextBox5" placeholder="Preço" runat="server" Width="194px"></asp:TextBox>
-&nbsp;&nbsp;&nbsp;
-            <asp:TextBox ID="TextBox6" placeholder="Quantidade em estoque" runat="server" Width="222px"></asp:TextBox>
-&nbsp;&nbsp;
-            <asp:TextBox ID="TextBox7" placeholder="Nota I.M.D.B" runat="server" Width="240px"></asp:TextBox>
-                <br />
-                <br />
-            <asp:FileUpload ID="FileUpload1" runat="server" />
-                 <br />
-            <asp:Button ID="Button1" runat="server" Text="Cadastrar Produto" Width="363px" />
+           </div>
+            <div class="col-md-12">
+                <asp:TextBox  Wrap="true" TextMode="MultiLine" ID="Sinipse_Prod" runat="server" placeholder="Sinopse do produto" Height="235px" Width="700px"></asp:TextBox>
+                    <br />
+                    <br />
+            </div>
+            <div class="col-md-12">
+                <asp:TextBox ID="Preco_Prod" placeholder="Preço" runat="server" Width="194px"></asp:TextBox>&nbsp;&nbsp;&nbsp;
 
-            <script type="text/javascript">
-             function mascara_data(campo) {    if(campo.value.length == 2)     {        campo.value += '/';    }    if(campo.value.length == 5)     {        campo.value += '/';    }}
-           </script>
-            <br />
-            <br />
-            <br />
-        </div>
+                <asp:TextBox ID="Qtd_Estoque" placeholder="Quantidade em estoque" runat="server" Width="222px"></asp:TextBox>&nbsp;&nbsp;
+
+                <asp:TextBox ID="Nota_Imdb" placeholder="Nota I.M.D.B" runat="server" Width="240px"></asp:TextBox>
+                <br />
+                <br />
+             </div>
+            <div class="col-md-12">
+                <asp:FileUpload ID="Foto_Prod" runat="server" />
+            </div>           
+             <div class="col-md-12"><br />
+                <asp:Button ID="Salvar_Produto" runat="server" OnClick="Salvar_Produto_Click" Text="Cadastrar Produto" />
+           </div>
     </div>
 
+</div>
 </asp:Content>

@@ -13,48 +13,48 @@ namespace movie_express.Pages.admin {
     public partial class cadastro_noticias {
         
         /// <summary>
-        /// Controle TextBox1.
+        /// Controle Titulo_Noticia.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox Titulo_Noticia;
         
         /// <summary>
-        /// Controle TextBox2.
+        /// Controle Texto_Noticia.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox Texto_Noticia;
         
         /// <summary>
-        /// Controle TextBox3.
+        /// Controle Data_Noticia.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.TextBox Data_Noticia;
         
         /// <summary>
-        /// Controle FileUpload1.
+        /// Controle Foto_Noticia.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
+        protected global::System.Web.UI.WebControls.FileUpload Foto_Noticia;
         
         /// <summary>
-        /// Controle Button1.
+        /// Controle Salvar_Noticia.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button Salvar_Noticia;
     }
 }

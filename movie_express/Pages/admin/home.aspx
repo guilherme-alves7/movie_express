@@ -12,8 +12,15 @@
             </h1>
         </div>
     </div>
-    <div class="col-md-12">
-      
+    <div style="margin-left: -30px;" class="col-md-12">
+        <asp:GridView ID="GridView1" runat="server" DataSourceID="EntityDataSource1" Height="346px" Width="100%" AllowPaging="True" AllowSorting="True" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+            <Columns>
+                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
+            </Columns>
+        </asp:GridView>
+        <asp:EntityDataSource ID="EntityDataSource1" runat="server" ConnectionString="name=bancoEntities1" DefaultContainerName="bancoEntities1" EnableFlattening="False" EntitySetName="TB_NOTIC" EnableDelete="True" EnableInsert="True" EnableUpdate="True" EntityTypeFilter="TB_NOTIC">
+        </asp:EntityDataSource>
+
     </div>
 
 
