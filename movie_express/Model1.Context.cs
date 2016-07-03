@@ -13,10 +13,10 @@ namespace movie_express
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class bancoEntities : DbContext
+    public partial class bancoEntities1 : DbContext
     {
-        public bancoEntities()
-            : base("name=bancoEntities")
+        public bancoEntities1()
+            : base("name=bancoEntities1")
         {
         }
     

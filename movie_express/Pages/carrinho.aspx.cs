@@ -36,15 +36,27 @@ namespace movie_express.Pages
             }
             else
             {
-                int cod_usuario = (int)Session["codigo"];
-                movie_express.bancoEntities banco = new movie_express.bancoEntities();
+                int cod_usuario = (int)Session["cod_usuario"];
+                movie_express.bancoEntities1 banco = new movie_express.bancoEntities1();
+
                 TB_PEDIDO pedido = new TB_PEDIDO();
                 pedido.US_ID = cod_usuario;
                 pedido.PEDI_DATA = DateTime.Now;
-               // pedido.PEDI_VALOR = "";
+                pedido.PEDI_VALOR = Decimal.Parse(Session["total_carrinho"].ToString());
                 pedido.PEDI_PAGO = false;
 
+                banco.TB_PEDIDO.Add(pedido);
+                banco.SaveChanges();
 
+                TB_PDPROD pedido_produto = new TB_PDPROD();
+                pedido_produto.PEDI_ID = pedido.PEDI_ID;
+                pedido_produto.PROD_ID = (int)Session["carrinho"];
+                pedido_produto.PDPR_QTD = 1;
+
+                banco.TB_PDPROD.Add(pedido_produto);
+                banco.SaveChanges();
+
+                Response.Redirect("perfil.aspx", false);
             }
         }
     }

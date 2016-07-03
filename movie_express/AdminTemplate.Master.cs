@@ -11,7 +11,16 @@ namespace movie_express
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+        }
 
+        protected void deslogar_Click(object sender, EventArgs e)
+        {
+            Session["logado"] = null;
+            Session["nomeusuario"] = null;
+            Session["cod_usuario"] = null;
+            //FormsAuthentication.SignOut();
+            Response.Redirect("../login.aspx");
         }
     }
 }

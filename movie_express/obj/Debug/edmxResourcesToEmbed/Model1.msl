@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="bancoModelStoreContainer" CdmEntityContainer="bancoEntities">
+  <EntityContainerMapping StorageEntityContainer="bancoModelStoreContainer" CdmEntityContainer="bancoEntities1">
     <EntitySetMapping Name="TB_NOTIC">
       <EntityTypeMapping TypeName="bancoModel.TB_NOTIC">
         <MappingFragment StoreEntitySet="TB_NOTIC">
@@ -9,6 +9,7 @@
           <ScalarProperty Name="NT_DTPUBL" ColumnName="NT_DTPUBL" />
           <ScalarProperty Name="NT_CORPO" ColumnName="NT_CORPO" />
           <ScalarProperty Name="NT_CURTID" ColumnName="NT_CURTID" />
+          <ScalarProperty Name="NT_FOTO" ColumnName="NT_FOTO" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -43,6 +44,7 @@
           <ScalarProperty Name="PROD_SINOPS" ColumnName="PROD_SINOPS" />
           <ScalarProperty Name="PROD_IMDB" ColumnName="PROD_IMDB" />
           <ScalarProperty Name="PROD_QTDEST" ColumnName="PROD_QTDEST" />
+          <ScalarProperty Name="PROD_FOTO" ColumnName="PROD_FOTO" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

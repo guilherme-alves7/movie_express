@@ -23,17 +23,17 @@
                 <div class="col-md-12">
                     <div class="product-content-right">
                         
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="product-images">
-                                    <div class="product-main-img">
-                                        <img src="../assets/img/produtos/<%= Request.QueryString["id"] %>.jpg" alt="">
-                                    </div>
-                                </div>
-                            </div>                            
+                        <div class="row">                                                      
                             <asp:HiddenField ID="inputPROD_ID" runat="server" Value="" />                  
                             <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource2">
                                 <ItemTemplate>
+                                    <div class="col-sm-6">
+                                        <div class="product-images">
+                                            <div class="product-main-img">
+                                                <img src="../assets/img/produtos/<%# Eval("PROD_FOTO") %>" alt="">
+                                            </div>
+                                        </div>
+                                    </div>  
                                     <div class="col-sm-6">
                                         <div class="product-inner">
                                             <h2 class="product-name"><%# Eval("PROD_TITULO") %></h2>
@@ -90,7 +90,7 @@
                                                 <div class="col-md-3 col-sm-6">
                                                     <div class="single-shop-product">
                                                         <div class="product-upper">
-                                                            <img src="../assets/img/produtos/<%# Eval("PROD_ID") %>.jpg" />
+                                                            <img src="../assets/img/produtos/<%# Eval("PROD_FOTO") %>" />
                                                         </div>
                                                         <h2><a href="<%# Eval("PROD_ID", "detalhes.aspx?id={0}") %>"><%# Eval("PROD_TITULO") %></a></h2>
                                                         <div class="product-carousel-price">

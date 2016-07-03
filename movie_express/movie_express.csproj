@@ -134,24 +134,19 @@
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="packages.config" />
-    <EntityDeploy Include="Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
     <Content Include="Pages\admin\cadastro_noticias.aspx" />
     <Content Include="Pages\admin\cadastro_produtos.aspx" />
     <Content Include="Pages\admin\home.aspx" />
     <Content Include="Pages\admin\listagem_clientes.aspx" />
     <Content Include="Pages\admin\listagem_pedidos.aspx" />
     <Content Include="Pages\admin\listar_produtos.aspx" />
-    <Content Include="Pages\index.html" />
+    <Content Include="Pages\cadastro.aspx" />
+    <Content Include="Pages\carrinho.aspx" />
+    <Content Include="Pages\detalhes.aspx" />
     <Content Include="Pages\login.aspx" />
     <Content Include="Pages\noticias.aspx" />
+    <Content Include="Pages\perfil.aspx" />
     <Content Include="Pages\produtos.aspx" />
-    <Content Include="Pages\shop.html" />
     <Content Include="SiteLoja.Master" />
     <Content Include="assets\fonts\fontawesome-webfont.eot" />
     <Content Include="assets\fonts\fontawesome-webfont.ttf" />
@@ -161,6 +156,13 @@
     <Content Include="assets\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="AdminTemplate.Master" />
+    <EntityDeploy Include="Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -180,9 +182,6 @@
     <Compile Include="AdminTemplate.Master.designer.cs">
       <DependentUpon>AdminTemplate.Master</DependentUpon>
     </Compile>
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -197,6 +196,17 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\cadastro.aspx.cs">
+      <DependentUpon>cadastro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\cadastro.aspx.designer.cs">
+      <DependentUpon>cadastro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Email.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Pages\admin\cadastro_noticias.aspx.cs">
       <DependentUpon>cadastro_noticias.aspx</DependentUpon>
@@ -240,6 +250,20 @@
     <Compile Include="Pages\admin\listar_produtos.aspx.designer.cs">
       <DependentUpon>listar_produtos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\carrinho.aspx.cs">
+      <DependentUpon>carrinho.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\carrinho.aspx.designer.cs">
+      <DependentUpon>carrinho.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\detalhes.aspx.cs">
+      <DependentUpon>detalhes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\detalhes.aspx.designer.cs">
+      <DependentUpon>detalhes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -253,6 +277,13 @@
     </Compile>
     <Compile Include="Pages\noticias.aspx.designer.cs">
       <DependentUpon>noticias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\perfil.aspx.cs">
+      <DependentUpon>perfil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\perfil.aspx.designer.cs">
+      <DependentUpon>perfil.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\produtos.aspx.cs">
       <DependentUpon>produtos.aspx</DependentUpon>
@@ -283,6 +314,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="assets\img\noticias\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

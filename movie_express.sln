@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "movie_express", "movie_express\movie_express.csproj", "{2420BBCB-69BE-420E-A88D-E2BEC98FA0F2}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "WebSetup1", "WebSetup1\WebSetup1.vdproj", "{5D4B0F9A-913A-420B-982F-954BE32DB463}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,8 +17,14 @@ Global
 		{2420BBCB-69BE-420E-A88D-E2BEC98FA0F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2420BBCB-69BE-420E-A88D-E2BEC98FA0F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2420BBCB-69BE-420E-A88D-E2BEC98FA0F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D4B0F9A-913A-420B-982F-954BE32DB463}.Debug|Any CPU.ActiveCfg = Debug
+		{5D4B0F9A-913A-420B-982F-954BE32DB463}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 EndGlobal

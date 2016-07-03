@@ -10,7 +10,7 @@
                         <h2>Seu Carrinho de Compras</h2>
                     </div>
                 </div>
-            </div>                        
+            </div>                                    
         </div>
     </div>
 
@@ -25,7 +25,6 @@
                             <th class="product-name">Produto</th>
                             <th class="product-price">Preço</th>
                             <th class="product-quantity">Quantidade</th>
-                            <th class="product-subtotal">Total</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,7 +42,7 @@
 
                                     <td class="product-thumbnail">
                                         <a href="single-product.html">
-                                            <img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="../assets/img/produtos/<%# Eval("PROD_ID") %>.jpg"></a>
+                                            <img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="../assets/img/produtos/<%# Eval("PROD_FOTO") %>"></a>
                                     </td>
 
                                     <td class="product-name">
@@ -55,8 +54,11 @@
                                     </td>
 
                                     <td class="product-quantity">
+
+                                        
                                         <div class="quantity buttons_added" data-id="<%# Eval("PROD_ID") %>">
-                                            <asp:DropDownList ID="qnt_prod" runat="server" OnSelectedIndexChanged="qnt_prod_SelectedIndexChanged" CssClass="input-text qty text">
+
+                                            <asp:DropDownList ID="quantidade" runat="server" CssClass="input-text qty text">
                                                 <asp:ListItem Text="1" Value="1"/>
                                                 <asp:ListItem Text="2" Value="2"/>
                                                 <asp:ListItem Text="3" Value="3"/>
@@ -69,10 +71,6 @@
                                                 <asp:ListItem Text="10" Value="10"/>
                                             </asp:DropDownList>
                                         </div>
-                                    </td>
-
-                                    <td class="product-subtotal">
-                                        <span id="total-<%# Eval("PROD_ID") %>" class="amount">15.00</span>
                                     </td>
                                 </tr>
                             </ItemTemplate>
@@ -95,31 +93,6 @@
                     </tbody>
                 </table>
             </form>
-
-            <div class="cart-collaterals">
-                <div class="cart_totals ">
-                    <h2>Total Carrinho</h2>
-
-                    <table cellspacing="0">
-                        <tbody>
-                            <tr class="cart-subtotal">
-                                <th>Subtotal</th>
-                                <td><span class="amount">R$ 150,00</span></td>
-                            </tr>
-
-                            <tr class="shipping">
-                                <th>Frete</th>
-                                <td>R$ 0,00</td>
-                            </tr>
-
-                            <tr class="order-total">
-                                <th>Total</th>
-                                <td><strong><span class="amount">R$ 150,00</span></strong> </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
         </div>                        
     </div>
 </asp:Content>

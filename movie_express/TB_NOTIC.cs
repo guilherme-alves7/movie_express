@@ -19,5 +19,6 @@ namespace movie_express
         public Nullable<System.DateTime> NT_DTPUBL { get; set; }
         public string NT_CORPO { get; set; }
         public Nullable<int> NT_CURTID { get; set; }
+        public string NT_FOTO { get; set; }
     }
 }

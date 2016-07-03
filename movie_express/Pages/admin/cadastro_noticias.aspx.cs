@@ -20,8 +20,8 @@ namespace movie_express.Pages.admin
         {
             movie_express.bancoEntities1 banco = new movie_express.bancoEntities1();
 
-            string path = HttpRuntime.AppDomainAppPath+("assets/img/noticias");
-            string nome = path + Foto_Noticia.FileName;
+            string path = HttpRuntime.AppDomainAppPath + (@"\assets\img\noticias\");
+            string nome = Foto_Noticia.FileName;
 
             TB_NOTIC noticia = new TB_NOTIC();
 
@@ -32,13 +32,10 @@ namespace movie_express.Pages.admin
 
             if (Foto_Noticia.HasFile)
             {
-                string extensao = Path.GetExtension(Foto_Noticia.FileName);
-                if (extensao == "jpg" || extensao == "JPEG" || extensao == "PNG" || extensao == "png" || extensao == "gif")
-                {
-                    Foto_Noticia.SaveAs(( path + Foto_Noticia.FileName));
-                }
+                string fileName = Path.GetFileName(Foto_Noticia.PostedFile.FileName);
+                Foto_Noticia.PostedFile.SaveAs(Server.MapPath(@"\assets\img\noticias\") + fileName);
             }
-            
+
             banco.TB_NOTIC.Add(noticia);
             banco.SaveChanges();
 

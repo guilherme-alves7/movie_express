@@ -25,7 +25,7 @@
                         <div class="col-md-3 col-sm-6">
                             <div class="single-shop-product">
                                 <div class="product-upper">
-                                    <img src="../assets/img/produtos/<%# Eval("PROD_ID") %>.jpg" />
+                                    <img src="../assets/img/produtos/<%# Eval("PROD_FOTO") %>" />
                                 </div>
                                 <h2><a href="<%# Eval("PROD_ID", "detalhes.aspx?id={0}") %>"><%# Eval("PROD_TITULO") %></a></h2>
                                 <div class="product-carousel-price">
@@ -39,7 +39,7 @@
                         </div>
                     </ItemTemplate>
                 </asp:Repeater>                
-                <asp:EntityDataSource ID="EntityDataSource1" runat="server" ConnectionString="name=bancoEntities" DefaultContainerName="bancoEntities" EnableFlattening="False" EntitySetName="TB_PROD">
+                <asp:EntityDataSource ID="EntityDataSource1" runat="server" ConnectionString="name=bancoEntities1" DefaultContainerName="bancoEntities1" EnableFlattening="False" EntitySetName="TB_PROD">
                 </asp:EntityDataSource>                
             </div>
         </div>

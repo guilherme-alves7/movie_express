@@ -27,6 +27,7 @@ namespace movie_express
         public string PROD_SINOPS { get; set; }
         public Nullable<int> PROD_IMDB { get; set; }
         public int PROD_QTDEST { get; set; }
+        public string PROD_FOTO { get; set; }
     
         public virtual ICollection<TB_PDPROD> TB_PDPROD { get; set; }
     }

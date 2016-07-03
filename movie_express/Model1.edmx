@@ -14,6 +14,7 @@
           <Property Name="NT_DTPUBL" Type="date" />
           <Property Name="NT_CORPO" Type="text" Nullable="false" />
           <Property Name="NT_CURTID" Type="int" />
+          <Property Name="NT_FOTO" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="TB_PDPROD">
           <Key>
@@ -46,6 +47,7 @@
           <Property Name="PROD_SINOPS" Type="text" />
           <Property Name="PROD_IMDB" Type="int" />
           <Property Name="PROD_QTDEST" Type="int" Nullable="false" />
+          <Property Name="PROD_FOTO" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="TB_USER">
           <Key>
@@ -131,6 +133,7 @@
           <Property Name="NT_DTPUBL" Type="DateTime" Precision="0" />
           <Property Name="NT_CORPO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NT_CURTID" Type="Int32" />
+          <Property Name="NT_FOTO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="TB_PDPROD">
           <Key>
@@ -167,6 +170,7 @@
           <Property Name="PROD_SINOPS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="PROD_IMDB" Type="Int32" />
           <Property Name="PROD_QTDEST" Type="Int32" Nullable="false" />
+          <Property Name="PROD_FOTO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="TB_PDPROD" Relationship="Self.FK_TB_PROD_ToTable_PDPROD" FromRole="TB_PROD" ToRole="TB_PDPROD" />
         </EntityType>
         <EntityType Name="TB_USER">
@@ -221,7 +225,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="bancoEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="bancoEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="TB_NOTIC" EntityType="Self.TB_NOTIC" />
           <EntitySet Name="TB_PDPROD" EntityType="Self.TB_PDPROD" />
           <EntitySet Name="TB_PEDIDO" EntityType="Self.TB_PEDIDO" />
@@ -245,7 +249,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="bancoModelStoreContainer" CdmEntityContainer="bancoEntities">
+        <EntityContainerMapping StorageEntityContainer="bancoModelStoreContainer" CdmEntityContainer="bancoEntities1">
           <EntitySetMapping Name="TB_NOTIC">
             <EntityTypeMapping TypeName="bancoModel.TB_NOTIC">
               <MappingFragment StoreEntitySet="TB_NOTIC">
@@ -254,6 +258,7 @@
                 <ScalarProperty Name="NT_DTPUBL" ColumnName="NT_DTPUBL" />
                 <ScalarProperty Name="NT_CORPO" ColumnName="NT_CORPO" />
                 <ScalarProperty Name="NT_CURTID" ColumnName="NT_CURTID" />
+                <ScalarProperty Name="NT_FOTO" ColumnName="NT_FOTO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -288,6 +293,7 @@
                 <ScalarProperty Name="PROD_SINOPS" ColumnName="PROD_SINOPS" />
                 <ScalarProperty Name="PROD_IMDB" ColumnName="PROD_IMDB" />
                 <ScalarProperty Name="PROD_QTDEST" ColumnName="PROD_QTDEST" />
+                <ScalarProperty Name="PROD_FOTO" ColumnName="PROD_FOTO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

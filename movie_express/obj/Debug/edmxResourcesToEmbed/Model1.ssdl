@@ -9,6 +9,7 @@
     <Property Name="NT_DTPUBL" Type="date" />
     <Property Name="NT_CORPO" Type="text" Nullable="false" />
     <Property Name="NT_CURTID" Type="int" />
+    <Property Name="NT_FOTO" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="TB_PDPROD">
     <Key>
@@ -41,6 +42,7 @@
     <Property Name="PROD_SINOPS" Type="text" />
     <Property Name="PROD_IMDB" Type="int" />
     <Property Name="PROD_QTDEST" Type="int" Nullable="false" />
+    <Property Name="PROD_FOTO" Type="varchar(max)" />
   </EntityType>
   <EntityType Name="TB_USER">
     <Key>

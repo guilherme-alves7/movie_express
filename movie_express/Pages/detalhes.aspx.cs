@@ -21,15 +21,26 @@ namespace movie_express.Pages
 
         protected void btn_add_carrinho_Click(object sender, EventArgs e)
         {
-            movie_express.bancoEntities banco = new movie_express.bancoEntities();
-           // TB_PROD produto = banco.TB_PROD.SingleOrDefault<v => v.PROD_ID == inputPROD_ID.Value >;
+            movie_express.bancoEntities1 banco = new movie_express.bancoEntities1();
 
-            if (Session["total_carrinho"] == null)
+            int cod_produto = Convert.ToInt32(inputPROD_ID.Value);
+            TB_PROD produto = banco.TB_PROD.SingleOrDefault(v => v.PROD_ID == cod_produto);
+
+            if(produto != null)
             {
-               // Session["total_carrinho"] = 
+                //if (Session["total_carrinho"] == null)
+                //{
+                    Session["total_carrinho"] = produto.PROD_PRECO;
+                //}
+                //else
+                //{
+                  //  decimal total = Decimal.Parse( Session["total_carrinho"].ToString() );
+                 //   total = total + produto.PROD_PRECO;
+                //    Session["total_carrinho"] = total;
+                //}
+                Session["carrinho"] = produto.PROD_ID;
             }
-
-            Session["carrinho"] = inputPROD_ID.Value;            
+             
             Response.Redirect("carrinho.aspx", false);
         }
     }
